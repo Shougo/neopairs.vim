@@ -38,15 +38,24 @@ function! neopairs#_complete_done() abort "{{{
 
   if !g:neopairs#enable
         \ || !exists('v:completed_item')
-        \ || index(keys(pairs), get(v:completed_item, 'word', '')[-1:]) < 0
+    return
+  endif
+
+  let word = get(v:completed_item, 'word', '')
+  if word == ''
+    return
+  endif
+
+  let insert = map(filter(keys(pairs),
+        \ 'strridx(word, v:val) == (len(word) - len(v:val))'),
+        \ 'pairs[v:val]')
+  if empty(insert)
     return
   endif
 
   " Auto close pairs
   let input = s:get_input('CompleteDone')
-  call setline('.', input
-        \ . pairs[ v:completed_item.word[-1:]]
-        \ . getline('.')[len(input):])
+  call setline('.', input . insert[0] . getline('.')[len(input):])
 endfunction"}}}
 
 function! s:get_input(event) abort "{{{
