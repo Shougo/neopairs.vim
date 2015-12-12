@@ -29,8 +29,8 @@ endif
 let g:loaded_neopairs = 1
 
 augroup neopairs
-  autocmd CompleteDone
-        \ * call neopairs#_complete_done()
+  autocmd!
+  autocmd CompleteDone * call neopairs#_complete_done()
 augroup END
 
 " vim: foldmethod=marker
