@@ -30,7 +30,7 @@ let g:neopairs#pairs =
       \ get(g:, 'neopairs#pairs', {})
 let g:neopairs#_pairs =
       \ get(g:, 'neopairs#_pairs',
-      \     { '[': ']', '<': '>', '(': ')', '{': '}' })
+      \     { '[': ']', '<': '>', '(': ')', '{': '}', '"': '"' })
 "}}}
 
 function! neopairs#_complete_done() abort "{{{
