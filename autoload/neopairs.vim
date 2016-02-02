@@ -38,11 +38,25 @@ function! neopairs#_complete_done() abort "{{{
 
   if !g:neopairs#enable
         \ || !exists('v:completed_item')
+        \ || empty(v:completed_item)
     return
   endif
 
-  let word = get(v:completed_item, 'word', '')
+  let item = v:completed_item
+  let word = item.word
   if word == ''
+    return
+  endif
+
+  let abbr = (item.abbr != '') ? item.abbr : item.word
+  if len(item.menu) > 5
+    " Combine menu.
+    let abbr .= ' ' . item.menu
+  endif
+  if item.info != ''
+    let abbr = split(item.info, '\n')[0]
+  endif
+  if abbr !~ '(.*)'
     return
   endif
 
