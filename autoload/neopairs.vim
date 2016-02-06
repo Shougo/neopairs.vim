@@ -56,9 +56,6 @@ function! neopairs#_complete_done() abort "{{{
   if item.info != ''
     let abbr = split(item.info, '\n')[0]
   endif
-  if abbr !~ '(.*)'
-    return
-  endif
 
   let insert = map(filter(keys(pairs),
         \ 'strridx(word, v:val) == (len(word) - len(v:val))'),
