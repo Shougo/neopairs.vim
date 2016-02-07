@@ -60,7 +60,7 @@ function! neopairs#_complete_done() abort "{{{
   let insert = map(filter(keys(pairs),
         \ 'strridx(word, v:val) == (len(word) - len(v:val))'),
         \ 'pairs[v:val]')
-  if empty(insert)
+  if empty(insert) || (insert[0] == '(' && abbr !~ '(.*)')
     return
   endif
 
