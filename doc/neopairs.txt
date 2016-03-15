@@ -32,7 +32,7 @@ FAQ			|neopairs-faq|
 ==============================================================================
 INSTALL						*neopairs-install*
 
-Note: neopairs requires Vim 7.4.774 or neovim (|v:completed_item| feature).
+Note: |neopairs| requires Vim 7.4.774 or neovim (|v:completed_item| feature).
 
 ==============================================================================
 INTERFACE					*neopairs-interface*
